@@ -1,0 +1,62 @@
+export default function Footer() {
+  return (
+    <footer className="bg-gray-900 dark:bg-slate-950 text-gray-400 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-xl flex items-center justify-center">
+                <span className="text-white font-bold text-sm">P</span>
+              </div>
+              <span className="text-white font-bold text-lg">PETKIT</span>
+            </div>
+            <p className="text-sm leading-relaxed">
+              Thiết bị thông minh hàng đầu dành cho thú cưng. Công nghệ hiện đại,
+              thiết kế tinh tế.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-white font-semibold mb-4">Sản phẩm</h3>
+            <ul className="space-y-2 text-sm">
+              <li><a href="#" className="hover:text-white transition-colors">PURA MAX 2</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">PURA X</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Fresh Element 3</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Eversweet 3 Pro</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-white font-semibold mb-4">Hỗ trợ</h3>
+            <ul className="space-y-2 text-sm">
+              <li><a href="#" className="hover:text-white transition-colors">Hướng dẫn sử dụng</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Câu hỏi thường gặp</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Chính sách bảo hành</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Liên hệ</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-white font-semibold mb-4">Liên hệ</h3>
+            <ul className="space-y-2 text-sm">
+              <li>Hotline: 1900-xxxx</li>
+              <li>Email: support@petkit.vn</li>
+              <li>Địa chỉ: 123 Nguyễn Huệ, Q1, TP.HCM</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-sm">
+            &copy; 2024 PETKIT Vietnam. All rights reserved.
+          </p>
+          <div className="flex gap-4 text-sm">
+            <a href="#" className="hover:text-white transition-colors">Điều khoản</a>
+            <a href="#" className="hover:text-white transition-colors">Bảo mật</a>
+            <a href="#" className="hover:text-white transition-colors">Cookie</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
