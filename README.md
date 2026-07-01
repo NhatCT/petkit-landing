@@ -1,136 +1,106 @@
-# PETKIT Landing Page - Máy Dọn Phân Mèo Thông Minh
+# PETKIT PURA MAX 2 - Landing Page
 
-Landing page hiện đại cho sản phẩm máy dọn phân mèo thông minh PETKIT Pura X, được xây dựng với React + Vite + Tailwind CSS.
+Landing page giới thiệu sản phẩm **PETKIT PURA MAX 2** - Nhà vệ sinh tự động thông minh cho mèo.
 
-## 🚀 Tech Stack
+## Demo
 
-- **React 18** - UI Library
-- **Vite** - Build Tool & Dev Server
-- **Tailwind CSS** - CSS Framework
-- **Framer Motion** - Animation Library
-- **React Hook Form** - Form Validation
-- **Lucide React** - Icon Library
+- **Live**: [petkit-landing.vercel.app](https://petkit-landing.vercel.app) *(hoặc link deploy)*
+- **Repo**: [github.com/NhatCT/petkit-landing](https://github.com/NhatCT/petkit-landing)
 
-## ✨ Tính Năng
+## Tính năng
 
-- ✅ Hero Section với animation mượt mà
-- ✅ Features Section với 6 tính năng nổi bật
-- ✅ Technical Specifications Section
-- ✅ Newsletter Signup Form với validation
-- ✅ Dark Mode toggle
-- ✅ Scroll Animations và micro-interactions
-- ✅ Responsive Design (Desktop & Mobile)
-- ✅ SEO Meta Tags hoàn chỉnh
-- ✅ Performance Optimization
+### Giao diện
+- Hero Section với parallax scroll effect và floating animation
+- Features Section - 6 công nghệ nổi bật với hover effects
+- Technical Specs - thông số kỹ thuật chi tiết
+- Products Section - hệ sinh thái sản phẩm PETKIT
+- Contact Form - đăng ký nhận tin với validation
+- Responsive hoàn toàn (Desktop + Tablet + Mobile)
+- Dark Mode toggle với localStorage persistence
 
-## 📦 Cài Đặt
+### Hiệu năng & SEO
+- Static Site Generation (SSG) cho tốc độ tối ưu
+- Tailwind CSS - utility-first, tree-shaking CSS
+- Framer Motion - hardware-accelerated animations
+- SEO đầy đủ: Title, Description, Open Graph, Twitter Card
+- Google Fonts với `display=swap`
+- Lighthouse Performance Score ≥ 85
+
+### Điểm cộng
+- **Dark Mode**: Toggle sáng/tối, lưu preference
+- **Scroll Animations**: Intersection Observer + Framer Motion
+- **Micro-interactions**: Hover effects, scale transitions, float animations
+- **Parallax Scrolling**: Hero section với depth layers
+- **Scroll Progress**: Thanh tiến trình cuộn trang
+- **User Behavior Tracking**: Track scroll milestones + click events
+- **Mini E-commerce**: Yêu thích, giỏ hàng, sản phẩm đã xem (Zustand)
+- **AI Chatbot**: Cửa sổ chat với auto-responses tư vấn sản phẩm
+- **Form Validation**: Kiểm tra tính hợp lệ real-time (email, SĐT)
+
+## Tech Stack
+
+| Công nghệ | Vai trò |
+|-----------|---------|
+| Next.js 16 | Framework React SSG |
+| TypeScript | Type safety |
+| Tailwind CSS 4 | Styling |
+| Framer Motion | Animations |
+| Zustand | State management |
+| Lucide React | Icons |
+| react-intersection-observer | Scroll detection |
+
+## Cài đặt & Chạy
 
 ```bash
-# Clone repository
-git clone <your-repo-url>
+# Clone
+git clone https://github.com/NhatCT/petkit-landing.git
 cd petkit-landing
 
-# Install dependencies
+# Install
 npm install
 
-# Start development server
+# Dev
 npm run dev
 
-# Build for production
+# Build
 npm run build
 
-# Preview production build
-npm run preview
+# Preview static export
+npx serve out
 ```
 
-## 🌐 Deployment
-
-### Vercel (Recommended)
-
-1. Push code lên GitHub
-2. Import project vào [Vercel](https://vercel.com)
-3. Vercel sẽ tự động detect và deploy
-
-### Manual Deployment
-
-```bash
-npm run build
-# Upload folder 'dist' lên hosting
-```
-
-## 📁 Cấu Trúc Project
+## Cấu trúc dự án
 
 ```
-petkit-landing/
-├── src/
-│   ├── components/
-│   │   ├── Hero.jsx          # Hero Section
-│   │   ├── Features.jsx      # Features Section
-│   │   ├── Specifications.jsx # Technical Specs
-│   │   ├── Newsletter.jsx    # Newsletter Form
-│   │   ├── Footer.jsx        # Footer
-│   │   └── DarkModeToggle.jsx # Dark Mode Toggle
-│   ├── App.jsx               # Main App Component
-│   ├── main.jsx              # Entry Point
-│   └── index.css             # Global Styles
-├── public/                   # Static Assets
-├── index.html                # HTML Template
-├── tailwind.config.js        # Tailwind Config
-├── vercel.json              # Vercel Config
-└── package.json             # Dependencies
+src/
+├── app/
+│   ├── layout.tsx          # Root layout + SEO metadata
+│   ├── page.tsx            # Main page composition
+│   └── globals.css         # Global styles + CSS vars
+├── components/
+│   ├── Navbar.tsx          # Navigation + Dark mode + Cart
+│   ├── HeroSection.tsx     # Hero with parallax
+│   ├── FeaturesSection.tsx # 6 feature cards
+│   ├── SpecsSection.tsx    # Technical specifications
+│   ├── ProductsSection.tsx # Product grid + e-commerce
+│   ├── ContactForm.tsx     # Newsletter signup form
+│   ├── CartPanel.tsx       # Slide-out cart panel
+│   ├── Chatbot.tsx         # AI chatbot window
+│   ├── ScrollProgress.tsx  # Scroll progress bar
+│   ├── ScrollTracker.tsx   # Behavior analytics
+│   └── Footer.tsx          # Footer links
+└── store/
+    └── useStore.ts         # Zustand global state
 ```
 
-## 🎨 Design System
+## Deploy
 
-- **Primary Color**: Blue (#0ea5e9)
-- **Secondary Color**: Indigo (#6366f1)
-- **Font**: System UI (Inter/Roboto)
-- **Style**: Minimalist Clean
-- **Dark Mode**: Supported
+Trang web được deploy tĩnh (static export), tương thích với:
+- Vercel
+- Netlify
+- Cloudflare Pages
+- GitHub Pages
 
-## 📝 SEO Optimization
+## Tác giả
 
-- Meta tags hoàn chỉnh (Title, Description, Keywords)
-- Open Graph tags cho Facebook
-- Twitter Card tags
-- Canonical URL
-- Semantic HTML structure
-
-## ⚡ Performance
-
-- Lazy loading components
-- Code splitting
-- Optimized images
-- Minified CSS/JS
-- Target: PageSpeed 85+ (Mobile)
-
-## 🔧 Git Workflow
-
-```bash
-# Create develop branch
-git checkout -b develop
-
-# Make changes and commit
-git add .
-git commit -m "feat: add new feature"
-
-# Push to develop
-git push origin develop
-
-# Merge to main when ready
-git checkout main
-git merge develop
-git push origin main
-```
-
-## 📄 License
-
-© 2025 PETKIT Việt Nam by HeLiCorp. All rights reserved.
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'feat: Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+**NhatCT** - [github.com/NhatCT](https://github.com/NhatCT)
