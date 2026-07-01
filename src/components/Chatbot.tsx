@@ -17,17 +17,18 @@ const INITIAL_MESSAGES: Message[] = [
     id: '1',
     role: 'assistant',
     content:
-      'Xin chào! Tôi là trợ lý AI của PETKIT. Tôi có thể giúp bạn tìm hiểu về sản phẩm, tư vấn chọn thiết bị phù hợp, hoặc giải đáp thắc mắc. Bạn cần hỗ trợ gì?',
+      'Xin chào! Tôi là trợ lý AI của PETKIT. Tôi có thể giúp bạn tìm hiểu về Purobot Ultra Camera AI, tư vấn chọn thiết bị phù hợp, hoặc giải đáp thắc mắc. Bạn cần hỗ trợ gì?',
     timestamp: new Date(),
   },
 ]
 
 const AUTO_RESPONSES: Record<string, string> = {
-  'giá': 'PETKIT PURA MAX 2 hiện có giá 12.990.000đ. Chúng tôi đang có chương trình giảm 10% cho khách hàng đăng ký nhận tin. Bạn muốn tôi tư vấn thêm không?',
-  'bảo hành': 'Tất cả sản phẩm PETKIT được bảo hành chính hãng 24 tháng. Hỗ trợ kỹ thuật 24/7 qua hotline 1900-xxxx.',
-  'mèo': 'PETKIT PURA MAX 2 phù hợp với mèo từ 1.5kg đến 8kg. Nếu bạn nuôi nhiều mèo, sản phẩm cũng tự động nhận diện và theo dõi sức khỏe từng bé riêng biệt.',
-  'giao hàng': 'Chúng tôi giao hàng miễn phí toàn quốc trong 2-5 ngày làm việc. Nội thành HCM và Hà Nội nhận hàng trong 24h.',
-  'cát': 'PURA MAX 2 tương thích với cát vón cục kích thước 1-4mm. Khay chứa 76L, trung bình 15-20 ngày mới cần thay cát hoàn toàn.',
+  'giá': 'PETKIT Purobot Ultra có Camera AI hiện có giá 19.800.000đ (giá gốc 35.000.000đ). Nhập mã PETKIT10% hoặc nhắn Zalo OA để giảm thêm 10%. Bạn muốn tôi tư vấn thêm không?',
+  'bảo hành': 'Purobot Ultra được bảo hành chính hãng 24 tháng tại HeLiCorp. Linh kiện chính hãng có sẵn. Hotline: 0799 258 929 (24/7).',
+  'mèo': 'Purobot Ultra phù hợp với TẤT CẢ giống mèo, trọng lượng dưới 10kg, từ 6 tháng tuổi và 1.5kg trở lên. Đáp ứng tốt cho 3-5 bé mèo.',
+  'giao hàng': 'Miễn phí giao hàng toàn quốc. Lắp đặt tận nơi tại Hà Nội và TP.HCM. Hỗ trợ trả góp 0% lãi suất, miễn phí cà thẻ.',
+  'camera': 'Purobot Ultra trang bị Camera AI xoay 180°, góc rộng 210°, hồng ngoại ban đêm và đàm thoại 2 chiều. Theo dõi hành vi mèo real-time qua app.',
+  'cát': 'Purobot Ultra có cabin dung tích 70L, hộp chất thải 10L. Tự động niêm phong túi rác liền mạch, không cần tiếp xúc khi đổ rác.',
 }
 
 function getAutoResponse(input: string): string {

@@ -4,17 +4,17 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
 const specs = [
-  { label: 'Kích thước', value: '532 x 507 x 644mm' },
-  { label: 'Trọng lượng', value: '12.5 kg' },
-  { label: 'Dung tích khay cát', value: '76 Lít' },
-  { label: 'Tải trọng tối đa', value: '8 kg (mèo)' },
-  { label: 'Công suất', value: '12W (hoạt động)' },
-  { label: 'Tiêu thụ điện', value: '1.2 kWh/tháng' },
-  { label: 'Kết nối', value: 'WiFi 2.4GHz + BLE 5.0' },
-  { label: 'Độ ồn', value: '< 45dB' },
-  { label: 'Cảm biến', value: 'Trọng lượng + Hồng ngoại + ToF' },
-  { label: 'Tương thích', value: 'Cát vón cục (1-4mm)' },
-  { label: 'Chứng nhận', value: 'CE / FCC / RoHS' },
+  { label: 'Chất liệu cabin', value: 'Nhựa ABS - 70 Lít' },
+  { label: 'Hộp chất thải', value: '10 Lít' },
+  { label: 'Mèo phù hợp', value: 'Tất cả giống mèo' },
+  { label: 'Trọng lượng mèo', value: 'Dưới 10 kg' },
+  { label: 'Tuổi mèo', value: 'Từ 6 tháng (≥1.5 kg)' },
+  { label: 'Camera', value: 'AI Xoay 180° - Góc rộng 210°' },
+  { label: 'Hồng ngoại', value: 'Có - Đàm thoại 2 chiều' },
+  { label: 'Khử mùi', value: 'Sáp khử mùi N60' },
+  { label: 'Niêm phong rác', value: 'Tự động - Túi liền mạch' },
+  { label: 'Chống nước', value: 'IPX5' },
+  { label: 'Cảm biến', value: '20 cảm biến an toàn' },
   { label: 'Bảo hành', value: '24 tháng chính hãng' },
 ]
 
@@ -35,8 +35,7 @@ export default function SpecsSection() {
             <span className="gradient-text">kỹ thuật</span>
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Được thiết kế tỉ mỉ từng chi tiết, đảm bảo hiệu suất vượt trội và
-            độ bền cao.
+            Thiết kế cao cấp, đáp ứng mọi nhu cầu chăm sóc thú cưng tự động.
           </p>
         </motion.div>
 
@@ -48,31 +47,13 @@ export default function SpecsSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            <div className="aspect-square max-w-md mx-auto rounded-3xl bg-gradient-to-br from-blue-100 to-cyan-50 dark:from-slate-800 dark:to-blue-900/30 flex items-center justify-center p-12 shadow-inner">
-              <div className="text-center">
-                <div className="w-48 h-48 mx-auto rounded-full bg-gradient-to-br from-blue-500/10 to-cyan-500/10 dark:from-blue-400/20 dark:to-cyan-400/20 flex items-center justify-center border-4 border-blue-200 dark:border-blue-700">
-                  <div className="text-center">
-                    <p className="text-4xl font-bold gradient-text">76L</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                      Dung tích
-                    </p>
-                  </div>
-                </div>
-                <div className="mt-8 grid grid-cols-3 gap-4">
-                  <div className="text-center">
-                    <p className="text-lg font-bold text-gray-900 dark:text-white">532</p>
-                    <p className="text-xs text-gray-500">Rộng (mm)</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-lg font-bold text-gray-900 dark:text-white">507</p>
-                    <p className="text-xs text-gray-500">Sâu (mm)</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-lg font-bold text-gray-900 dark:text-white">644</p>
-                    <p className="text-xs text-gray-500">Cao (mm)</p>
-                  </div>
-                </div>
-              </div>
+            <div className="aspect-square max-w-md mx-auto rounded-3xl bg-gradient-to-br from-blue-100 to-cyan-50 dark:from-slate-800 dark:to-blue-900/30 flex items-center justify-center overflow-hidden shadow-inner">
+              <img
+                src="https://bizweb.dktcdn.net/100/492/700/products/petkit-purobot-ultra-camera-2.jpg?v=1727943618297"
+                alt="PETKIT Purobot Ultra - góc nhìn bên trong"
+                className="w-full h-full object-contain p-6"
+                loading="lazy"
+              />
             </div>
           </motion.div>
 

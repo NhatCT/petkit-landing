@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Moon, Sun, ShoppingCart, Heart, Menu, X } from 'lucide-react'
+import { Moon, Sun, Menu, X } from 'lucide-react'
 import { useStore } from '@/store/useStore'
 
 export default function Navbar() {
-  const { darkMode, toggleDarkMode, cart, favorites, toggleCartPanel } = useStore()
+  const { darkMode, toggleDarkMode } = useStore()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -27,7 +27,7 @@ export default function Navbar() {
   const navLinks = [
     { label: 'Tính năng', href: '#features' },
     { label: 'Thông số', href: '#specs' },
-    { label: 'Sản phẩm', href: '#products' },
+    { label: 'Hình ảnh', href: '#gallery' },
     { label: 'Liên hệ', href: '#contact' },
   ]
 
@@ -72,27 +72,6 @@ export default function Navbar() {
                 <Sun className="w-5 h-5 text-yellow-500" />
               ) : (
                 <Moon className="w-5 h-5 text-gray-600" />
-              )}
-            </button>
-
-            <button className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors relative">
-              <Heart className="w-5 h-5 text-gray-600 dark:text-gray-300" />
-              {favorites.length > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-[10px] rounded-full flex items-center justify-center">
-                  {favorites.length}
-                </span>
-              )}
-            </button>
-
-            <button
-              onClick={toggleCartPanel}
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors relative"
-            >
-              <ShoppingCart className="w-5 h-5 text-gray-600 dark:text-gray-300" />
-              {cart.length > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-blue-500 text-white text-[10px] rounded-full flex items-center justify-center">
-                  {cart.length}
-                </span>
               )}
             </button>
 
