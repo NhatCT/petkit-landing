@@ -115,23 +115,18 @@ export default function HeroSection() {
             <div className="relative w-80 h-80 sm:w-96 sm:h-96 lg:w-[450px] lg:h-[450px]">
               {/* Glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-full blur-3xl animate-pulse" />
-              {/* Product placeholder with gradient */}
+              {/* Product image */}
               <motion.div
                 animate={{ y: [0, -15, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                className="relative w-full h-full rounded-3xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center shadow-2xl overflow-hidden"
+                className="relative w-full h-full rounded-3xl bg-gradient-to-br from-gray-50 to-white dark:from-slate-800 dark:to-slate-700 flex items-center justify-center shadow-2xl overflow-hidden"
               >
-                <div className="text-center p-8">
-                  <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center">
-                    <span className="text-white text-4xl font-bold">PK</span>
-                  </div>
-                  <p className="text-gray-600 dark:text-gray-300 font-semibold text-lg">
-                    PURA MAX 2
-                  </p>
-                  <p className="text-gray-400 dark:text-gray-500 text-sm mt-1">
-                    Self-Cleaning Litter Box
-                  </p>
-                </div>
+                <img
+                  src="https://bizweb.dktcdn.net/100/492/700/products/pura-max-2025-4.jpg?v=1767698417437"
+                  alt="PETKIT PURA MAX 2 - Máy dọn vệ sinh mèo tự động"
+                  className="w-full h-full object-contain p-4"
+                  loading="eager"
+                />
               </motion.div>
             </div>
           </motion.div>

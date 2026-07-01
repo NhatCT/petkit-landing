@@ -10,7 +10,7 @@ const products = [
     id: 'pura-max-2',
     name: 'PETKIT PURA MAX 2',
     price: 12990000,
-    image: '/images/product-1.jpg',
+    image: 'https://bizweb.dktcdn.net/100/492/700/products/pura-max-2025-4.jpg?v=1767698417437',
     description: 'Nhà vệ sinh tự động thông minh - Thế hệ mới nhất',
     badge: 'Best Seller',
   },
@@ -18,7 +18,7 @@ const products = [
     id: 'pura-x',
     name: 'PETKIT PURA X',
     price: 8990000,
-    image: '/images/product-2.jpg',
+    image: 'https://bizweb.dktcdn.net/100/492/700/products/petkit-pura-x-2024.jpg?v=1702029599527',
     description: 'Nhà vệ sinh tự động - Phiên bản compact',
     badge: 'Popular',
   },
@@ -26,7 +26,7 @@ const products = [
     id: 'fresh-element-3',
     name: 'PETKIT Fresh Element 3',
     price: 4590000,
-    image: '/images/product-3.jpg',
+    image: 'https://bizweb.dktcdn.net/thumb/large/100/492/700/products/petkit-fresh-element-solo-1.jpg?v=1732179102810',
     description: 'Máy cho ăn tự động với camera HD',
     badge: 'New',
   },
@@ -34,7 +34,7 @@ const products = [
     id: 'eversweet-3-pro',
     name: 'PETKIT Eversweet 3 Pro',
     price: 1890000,
-    image: '/images/product-4.jpg',
+    image: 'https://bizweb.dktcdn.net/100/492/700/products/may-loc-nuoc-cho-thu-cung-petkit-eversweet-6-01-b3f09a1b-a5d8-4c63-889b-ffd1b2139305.jpg?v=1693068907007',
     description: 'Máy lọc nước thông minh cho thú cưng',
     badge: null,
   },
@@ -79,19 +79,18 @@ export default function ProductsSection() {
               className="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-gray-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all"
             >
               {/* Image */}
-              <div className="relative aspect-square bg-gradient-to-br from-gray-100 to-gray-200 dark:from-slate-700 dark:to-slate-600 flex items-center justify-center">
+              <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-white dark:from-slate-700 dark:to-slate-600 flex items-center justify-center">
                 {product.badge && (
-                  <span className="absolute top-3 left-3 px-2 py-1 text-xs font-semibold rounded-full bg-blue-500 text-white">
+                  <span className="absolute top-3 left-3 px-2 py-1 text-xs font-semibold rounded-full bg-blue-500 text-white z-10">
                     {product.badge}
                   </span>
                 )}
-                <div className="text-center">
-                  <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center">
-                    <span className="text-blue-600 dark:text-blue-400 font-bold">
-                      PK
-                    </span>
-                  </div>
-                </div>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-contain p-4"
+                  loading="lazy"
+                />
 
                 {/* Overlay actions */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100">
