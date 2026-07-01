@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Package, Zap, Ruler, Wifi, Database, Award } from 'lucide-react';
+import { Package, Zap, Ruler, Wifi, Database, Award, Scale, ShieldCheck } from 'lucide-react';
 
 const specs = [
   {
@@ -9,34 +9,46 @@ const specs = [
     detail: 'Phù hợp với mèo từ 1.5kg - 10kg'
   },
   {
+    icon: Scale,
+    label: 'Trọng Lượng',
+    value: '12.5 kg',
+    detail: 'Thiết kế ổn định, bền bỉ'
+  },
+  {
     icon: Zap,
     label: 'Nguồn Điện',
     value: '100-240V / 50-60Hz',
-    detail: 'Tiết kiệm điện, an toàn'
+    detail: 'Tiết kiệm điện, an toàn tuyệt đối'
   },
   {
     icon: Ruler,
     label: 'Khay Chứa',
     value: '10L dung tích',
-    detail: 'Chứa được cho 2-3 mèo'
+    detail: 'Chứa được cho 2-3 mèo trưởng thành'
   },
   {
     icon: Wifi,
     label: 'Kết Nối',
     value: 'WiFi 2.4GHz',
-    detail: 'Bluetooth 5.0'
+    detail: 'Bluetooth 5.0 + App PETKIT Smart'
   },
   {
     icon: Database,
-    label: 'App',
+    label: ' Ứng Dụng',
     value: 'PETKIT Smart',
-    detail: 'iOS & Android'
+    detail: 'iOS 12+ & Android 8.0+'
+  },
+  {
+    icon: ShieldCheck,
+    label: 'Cảm Biến',
+    value: '4 lớp cảm biến',
+    detail: '红外, trọng lượng, radar, an toàn'
   },
   {
     icon: Award,
     label: 'Bảo Hành',
-    value: '12 tháng',
-    detail: 'Chính hãng PETKIT'
+    value: '12 tháng chính hãng',
+    detail: 'PETKIT Việt Nam by HeLiCorp'
   }
 ];
 
@@ -52,14 +64,14 @@ const Specifications = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Thông Số Kỹ Thuật
+            Thông Số Kỹ Thuật Pura Max 2
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Thiết kế chính xác với chất lượng cao nhất
+            Thiết kế chính xác với chất lượng cao nhất từ PETKIT
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {specs.map((spec, index) => (
             <motion.div
               key={index}
@@ -99,10 +111,21 @@ const Specifications = () => {
           <h3 className="text-2xl font-bold text-white mb-4">
             Đã Bán Hơn 5 Triệu Sản Phẩm Toàn Cầu
           </h3>
-          <p className="text-blue-100 max-w-2xl mx-auto">
+          <p className="text-blue-100 max-w-2xl mx-auto mb-6">
             PETKIT là thương hiệu hàng đầu thế giới về sản phẩm công nghệ cho thú cưng, 
-            có mặt tại hơn 35 quốc gia.
+            có mặt tại hơn 35 quốc gia với hơn 5 triệu người dùng.
           </p>
+          <a 
+            href="https://petkitvietnam.com/may-don-phan-meo" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-full font-semibold transition-all duration-300"
+          >
+            Xem Sản Phẩm Chi Tiết
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
         </motion.div>
       </div>
     </section>

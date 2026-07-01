@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Share2, Camera, Video, Mail, Phone, MapPin } from 'lucide-react';
+import { Share2, Camera, Video, Mail, Phone, MapPin, Store } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -17,16 +17,16 @@ const Footer = () => {
             </h3>
             <p className="text-gray-400 mb-4">
               Nhà phân phối ủy quyền chính thức của PETKIT tại Việt Nam. 
-              Sản phẩm chính hãng 100%.
+              Nhập khẩu và phân phối trực tiếp - KHÔNG qua trung gian.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-colors duration-300">
+              <a href="https://www.facebook.com/petkitvietnam" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-colors duration-300">
                 <Share2 className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-gray-800 hover:bg-pink-600 rounded-full flex items-center justify-center transition-colors duration-300">
+              <a href="https://www.instagram.com/petkitvietnam" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-800 hover:bg-pink-600 rounded-full flex items-center justify-center transition-colors duration-300">
                 <Camera className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-gray-800 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors duration-300">
+              <a href="https://www.youtube.com/@petkitvietnam" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-800 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors duration-300">
                 <Video className="w-5 h-5" />
               </a>
             </div>
@@ -40,10 +40,10 @@ const Footer = () => {
           >
             <h4 className="text-lg font-semibold mb-4">Sản Phẩm</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">Máy Dọn Phân Mèo</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">Lồng Sấy Lông</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">Máy Ăn Thông Minh</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">Máy Lọc Nước</a></li>
+              <li><a href="https://petkitvietnam.com/may-don-phan-meo" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">Máy Dọn Phân Mèo</a></li>
+              <li><a href="https://petkitvietnam.com/long-say-long-cho-meo" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">Lồng Sấy Lông</a></li>
+              <li><a href="https://petkitvietnam.com/may-cho-thu-cung-an" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">Máy Ăn Thông Minh</a></li>
+              <li><a href="https://petkitvietnam.com/may-loc-nuoc" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">Máy Lọc Nước</a></li>
             </ul>
           </motion.div>
 
@@ -55,10 +55,10 @@ const Footer = () => {
           >
             <h4 className="text-lg font-semibold mb-4">Hỗ Trợ</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">Chính Sách Bảo Hành</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">Hướng Dẫn Sử Dụng</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">Câu Hỏi Thường Gặp</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">Liên Hệ</a></li>
+              <li><a href="https://petkitvietnam.com/chinh-sach-bao-hanh" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">Chính Sách Bảo Hành</a></li>
+              <li><a href="https://petkitvietnam.com/huong-dan-su-dung" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">Hướng Dẫn Sử Dụng</a></li>
+              <li><a href="https://petkitvietnam.com/trung-tam-bao-hanh" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">Trung Tâm Bảo Hành</a></li>
+              <li><a href="https://petkitvietnam.com/lien-he" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">Liên Hệ</a></li>
             </ul>
           </motion.div>
 
@@ -72,15 +72,19 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-gray-400">
                 <Phone className="w-5 h-5 text-blue-400" />
-                <span>0799 258 929</span>
+                <a href="tel:0799258929" className="hover:text-white transition-colors duration-300">0799 258 929</a>
               </li>
               <li className="flex items-center gap-3 text-gray-400">
                 <Mail className="w-5 h-5 text-blue-400" />
-                <span>info@petkitvietnam.com</span>
+                <a href="mailto:info@petkitvietnam.com" className="hover:text-white transition-colors duration-300">info@petkitvietnam.com</a>
+              </li>
+              <li className="flex items-start gap-3 text-gray-400">
+                <Store className="w-5 h-5 text-blue-400 flex-shrink-0 mt-1" />
+                <span>2 Flagship Store tại Hà Nội & TP.HCM</span>
               </li>
               <li className="flex items-start gap-3 text-gray-400">
                 <MapPin className="w-5 h-5 text-blue-400 flex-shrink-0 mt-1" />
-                <span>Hà Nội & TP. Hồ Chí Minh</span>
+                <a href="https://petkitvietnam.com/danh-sach-cua-hang" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">Xem địa chỉ cửa hàng</a>
               </li>
             </ul>
           </motion.div>
@@ -94,6 +98,7 @@ const Footer = () => {
           className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400"
         >
           <p>&copy; 2025 PETKIT Việt Nam by HeLiCorp. All rights reserved.</p>
+          <p className="text-sm mt-2">Nhà phân phối ủy quyền chính thức của PETKIT Thượng Hải tại Việt Nam</p>
         </motion.div>
       </div>
     </footer>

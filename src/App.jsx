@@ -1,5 +1,6 @@
 import Hero from './components/Hero';
 import Features from './components/Features';
+import ProductGallery from './components/ProductGallery';
 import Specifications from './components/Specifications';
 import Newsletter from './components/Newsletter';
 import Footer from './components/Footer';
@@ -11,6 +12,7 @@ function App() {
       <DarkModeToggle />
       <Hero />
       <Features />
+      <ProductGallery />
       <Specifications />
       <Newsletter />
       <Footer />
