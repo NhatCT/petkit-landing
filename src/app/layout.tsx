@@ -2,20 +2,20 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'PETKIT PURA MAX 2 | Nhà Vệ Sinh Tự Động Thông Minh Cho Mèo',
+  title: 'PETKIT Purobot Ultra | Máy Dọn Phân Mèo Tự Động Camera AI',
   description:
-    'PETKIT PURA MAX 2 - Nhà vệ sinh tự động cao cấp với công nghệ AI nhận diện mèo, khử mùi xOdor, và điều khiển từ xa qua app. Giải phóng bạn khỏi việc dọn khay mỗi ngày.',
+    'PETKIT Purobot Ultra - Máy dọn phân mèo tự động có Camera AI xoay 180°, đàm thoại 2 chiều, 20 cảm biến an toàn và tự động niêm phong túi rác. Giá 19.800.000đ.',
   keywords: [
     'PETKIT',
-    'nhà vệ sinh mèo tự động',
-    'smart litter box',
-    'PURA MAX 2',
+    'Purobot Ultra',
+    'máy dọn phân mèo tự động',
+    'camera AI mèo',
     'thiết bị thông minh thú cưng',
   ],
   openGraph: {
-    title: 'PETKIT PURA MAX 2 | Nhà Vệ Sinh Tự Động Thông Minh',
+    title: 'PETKIT Purobot Ultra | Máy Dọn Phân Mèo Tự Động Camera AI',
     description:
-      'Công nghệ AI nhận diện mèo, khử mùi xOdor, điều khiển từ xa. Giải phóng bạn khỏi việc dọn khay mỗi ngày.',
+      'Camera AI xoay 180°, đàm thoại 2 chiều, 20 cảm biến an toàn. Tự động niêm phong túi rác, khử mùi N60.',
     type: 'website',
     locale: 'vi_VN',
     siteName: 'PETKIT Vietnam',
@@ -23,9 +23,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'PETKIT PURA MAX 2 | Smart Self-Cleaning Litter Box',
+    title: 'PETKIT Purobot Ultra | AI Camera Self-Cleaning Litter Box',
     description:
-      'AI-powered cat recognition, xOdor deodorization, remote app control.',
+      'AI Camera 180°, 2-way audio, 20 safety sensors, auto-sealing trash bags.',
   },
   robots: {
     index: true,

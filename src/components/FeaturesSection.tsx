@@ -3,56 +3,56 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import {
-  Brain,
+  Camera,
   Wind,
-  Smartphone,
   Shield,
-  Battery,
-  Wifi,
+  Smartphone,
+  Heart,
+  Droplets,
 } from 'lucide-react'
 
 const features = [
   {
-    icon: Brain,
-    title: 'AI Nhận Diện Mèo',
+    icon: Camera,
+    title: 'Camera AI Xoay 180°',
     description:
-      'Cảm biến thông minh nhận diện chính xác mèo, phân biệt với vật nuôi khác và trẻ nhỏ. Tự động kích hoạt chu trình dọn dẹp sau khi mèo rời đi.',
+      'Camera thông minh góc rộng 210°, hồng ngoại ban đêm, hỗ trợ đàm thoại 2 chiều. Theo dõi hành vi mèo và phân tích sức khỏe qua phân.',
     color: 'from-purple-500 to-indigo-500',
   },
   {
     icon: Wind,
-    title: 'Khử Mùi xOdor',
+    title: 'Khử Mùi N60',
     description:
-      'Công nghệ khử mùi tiên tiến 3 lớp: than hoạt tính, ion bạc và quạt thông gió thông minh. Loại bỏ 99.9% mùi hôi trong 5 phút.',
+      'Bộ khử mùi N60 chuyên dụng kết hợp hộp chất thải đóng kín. Không gian sống luôn trong lành, sạch sẽ.',
     color: 'from-cyan-500 to-blue-500',
   },
   {
-    icon: Smartphone,
-    title: 'Điều Khiển Từ Xa',
-    description:
-      'Theo dõi và quản lý qua app PETKIT. Nhận thông báo real-time về sức khỏe mèo, lịch sử sử dụng và cảnh báo bất thường.',
-    color: 'from-green-500 to-emerald-500',
-  },
-  {
     icon: Shield,
-    title: 'An Toàn Tuyệt Đối',
+    title: '20 Cảm Biến An Toàn',
     description:
-      'Cảm biến trọng lượng + hồng ngoại đa điểm ngăn chặn hoạt động khi mèo ở bên trong. Chứng nhận an toàn quốc tế CE/FCC.',
+      'Hệ thống 20 cảm biến bảo vệ mèo tuyệt đối. Ngăn chặn hoạt động khi mèo ở bên trong. Chống nước IPX5.',
     color: 'from-orange-500 to-red-500',
   },
   {
-    icon: Battery,
-    title: 'Siêu Tiết Kiệm',
+    icon: Smartphone,
+    title: 'Điều Khiển Qua App',
     description:
-      'Tiêu thụ chỉ 1.2kWh/tháng, tương đương 3.000đ tiền điện. Thiết kế khay cát lớn 76L giảm tần suất thay cát.',
-    color: 'from-yellow-500 to-orange-500',
+      'Quản lý từ xa qua ứng dụng PETKIT. Nhận thông báo real-time, xem camera trực tiếp và theo dõi lịch sử sử dụng.',
+    color: 'from-green-500 to-emerald-500',
   },
   {
-    icon: Wifi,
-    title: 'Kết Nối IoT',
+    icon: Heart,
+    title: 'Theo Dõi Sức Khỏe',
     description:
-      'Tương thích HomeKit, Google Home và Alexa. Tự động lên lịch dọn dẹp theo thói quen sinh hoạt của mèo.',
+      'Phân tích sức khỏe mèo thông qua màu sắc và tần suất phân. Phù hợp cho 3-5 bé mèo, trọng lượng dưới 10kg.',
     color: 'from-pink-500 to-rose-500',
+  },
+  {
+    icon: Droplets,
+    title: 'Tự Động Niêm Phong',
+    description:
+      'Túi rác liền mạch tự động niêm phong. Không cần tiếp xúc trực tiếp khi đổ rác. Vành cửa chống thấm nâng cấp.',
+    color: 'from-yellow-500 to-orange-500',
   },
 ]
 
@@ -70,12 +70,12 @@ export default function FeaturesSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            <span className="text-gray-900 dark:text-white">Công nghệ </span>
-            <span className="gradient-text">đột phá</span>
+            <span className="text-gray-900 dark:text-white">Tính năng </span>
+            <span className="gradient-text">nổi bật</span>
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Tích hợp 6 công nghệ tiên tiến nhất, mang đến trải nghiệm chăm sóc
-            thú cưng hoàn toàn tự động.
+            Tích hợp công nghệ hiện đại nhất, mang đến trải nghiệm chăm sóc
+            thú cưng hoàn toàn tự động và an toàn.
           </p>
         </motion.div>
 

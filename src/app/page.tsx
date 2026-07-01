@@ -5,7 +5,6 @@ import SpecsSection from '@/components/SpecsSection'
 import ProductsSection from '@/components/ProductsSection'
 import ContactForm from '@/components/ContactForm'
 import Footer from '@/components/Footer'
-import CartPanel from '@/components/CartPanel'
 import Chatbot from '@/components/Chatbot'
 import ScrollProgress from '@/components/ScrollProgress'
 import ScrollTracker from '@/components/ScrollTracker'
@@ -24,7 +23,6 @@ export default function Home() {
         <ContactForm />
       </main>
       <Footer />
-      <CartPanel />
       <Chatbot />
     </>
   )

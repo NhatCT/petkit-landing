@@ -19,10 +19,10 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">Sản phẩm</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-white transition-colors">PURA MAX 2</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">PURA X</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Fresh Element 3</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Eversweet 3 Pro</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Purobot Ultra</a></li>
+              <li><a href="#features" className="hover:text-white transition-colors">Tính năng</a></li>
+              <li><a href="#specs" className="hover:text-white transition-colors">Thông số</a></li>
+              <li><a href="#gallery" className="hover:text-white transition-colors">Hình ảnh</a></li>
             </ul>
           </div>
 
@@ -39,9 +39,9 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">Liên hệ</h3>
             <ul className="space-y-2 text-sm">
-              <li>Hotline: 1900-xxxx</li>
+              <li>Hotline: 0799 258 929</li>
               <li>Email: support@petkit.vn</li>
-              <li>Địa chỉ: 123 Nguyễn Huệ, Q1, TP.HCM</li>
+              <li>Địa chỉ: HeLiPet - Đại lý ủy quyền PETKIT</li>
             </ul>
           </div>
         </div>
