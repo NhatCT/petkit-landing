@@ -20,6 +20,14 @@ export const metadata: Metadata = {
     locale: 'vi_VN',
     siteName: 'PETKIT Vietnam',
     url: 'https://petkit-landing.vercel.app',
+    images: [
+      {
+        url: 'https://bizweb.dktcdn.net/100/492/700/products/petkit-purobot-ultra-camera-3.jpg?v=1727943621200',
+        width: 1200,
+        height: 630,
+        alt: 'PETKIT Purobot Ultra',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -31,6 +39,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  alternates: {
+    canonical: 'https://petkit-landing.vercel.app',
+  },
 }
 
 export default function RootLayout({
@@ -41,6 +52,9 @@ export default function RootLayout({
   return (
     <html lang="vi" suppressHydrationWarning>
       <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#0ea5e9" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
