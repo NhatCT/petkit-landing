@@ -6,6 +6,7 @@ import Chatbot from '@/components/Chatbot'
 import ScrollProgress from '@/components/ScrollProgress'
 import ScrollTracker from '@/components/ScrollTracker'
 import CartDrawer from '@/components/CartDrawer'
+import BackToTop from '@/components/BackToTop'
 
 const FeaturesSection = dynamic(() => import('@/components/FeaturesSection'), {
   loading: () => (
@@ -116,6 +117,7 @@ export default function Home() {
       <Footer />
       <Chatbot />
       <CartDrawer />
+      <BackToTop />
     </>
   )
 }
