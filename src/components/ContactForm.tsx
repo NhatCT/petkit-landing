@@ -59,10 +59,12 @@ export default function ContactForm() {
 
     try {
       const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
+        name: formData.name,
+        email: formData.email,
         phone: formData.phone,
         message: formData.message,
+        time: new Date().toLocaleString('vi-VN'),
+        title: 'Đăng ký nhận tin',
       }
 
       await emailjs.send(

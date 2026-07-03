@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Moon, Sun, Menu, X } from 'lucide-react'
+import { Moon, Sun, Menu, X, Heart, ShoppingCart } from 'lucide-react'
 import { useStore } from '@/store/useStore'
 
 export default function Navbar() {
@@ -30,6 +30,8 @@ export default function Navbar() {
     { label: 'Hình ảnh', href: '#gallery' },
     { label: 'Liên hệ', href: '#contact' },
   ]
+
+  const { wishlist, cartCount, toggleChat } = useStore()
 
   return (
     <motion.nav
@@ -62,7 +64,7 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="flex items-center gap-2 md:gap-4">
+          <div className="flex items-center gap-1 md:gap-4">
             <button
               onClick={toggleDarkMode}
               className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors"
@@ -72,6 +74,32 @@ export default function Navbar() {
                 <Sun className="w-5 h-5 text-yellow-500" />
               ) : (
                 <Moon className="w-5 h-5 text-gray-600" />
+              )}
+            </button>
+
+            <button
+              onClick={toggleChat}
+              className="hidden md:flex p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors relative"
+              aria-label="Open chat"
+            >
+              <Heart className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+              {wishlist.length > 0 && (
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
+                  {wishlist.length}
+                </span>
+              )}
+            </button>
+
+            <button
+              onClick={toggleChat}
+              className="hidden md:flex p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors relative"
+              aria-label="Open cart"
+            >
+              <ShoppingCart className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+              {cartCount() > 0 && (
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-blue-500 text-white text-xs rounded-full flex items-center justify-center">
+                  {cartCount()}
+                </span>
               )}
             </button>
 
