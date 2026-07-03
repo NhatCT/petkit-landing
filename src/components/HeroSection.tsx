@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { ChevronDown, Sparkles } from 'lucide-react'
+import Image from 'next/image'
 
 export default function HeroSection() {
   const ref = useRef<HTMLDivElement>(null)
@@ -121,11 +122,13 @@ export default function HeroSection() {
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                 className="relative w-full h-full rounded-3xl bg-gradient-to-br from-gray-50 to-white dark:from-slate-800 dark:to-slate-700 flex items-center justify-center shadow-2xl overflow-hidden"
               >
-                <img
+                <Image
                   src="https://bizweb.dktcdn.net/100/492/700/products/petkit-purobot-ultra-camera-1.jpg?v=1727943614623"
                   alt="PETKIT Purobot Ultra - Máy dọn phân mèo tự động có Camera AI"
-                  className="w-full h-full object-contain p-4"
-                  loading="eager"
+                  fill
+                  className="object-contain p-4"
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </motion.div>
             </div>

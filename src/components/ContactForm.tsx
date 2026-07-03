@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
+import emailjs from '@emailjs/browser'
 
 interface FormData {
   name: string
@@ -57,18 +58,24 @@ export default function ContactForm() {
     setStatus('loading')
 
     try {
-      // Simulate webhook call (replace with real endpoint in production)
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+      }
 
-      // Log for demo purposes
-      console.log('[Webhook] Form submission:', {
-        ...formData,
-        timestamp: new Date().toISOString(),
-      })
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      )
 
       setStatus('success')
       setFormData({ name: '', email: '', phone: '', message: '' })
-    } catch {
+    } catch (error) {
+      console.error('EmailJS error:', error)
       setStatus('error')
     }
   }
