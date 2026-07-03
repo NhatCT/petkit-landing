@@ -1,7 +1,8 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { useRef } from 'react'
 
 const specs = [
   { label: 'Chất liệu cabin', value: 'Nhựa ABS - 70 Lít' },
@@ -20,9 +21,17 @@ const specs = [
 
 export default function SpecsSection() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  })
+
+  const x = useTransform(scrollYProgress, [0, 1], [-50, 50])
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8])
 
   return (
-    <section id="specs" className="py-20 lg:py-32 relative">
+    <section id="specs" ref={sectionRef} className="py-20 lg:py-32 relative overflow-hidden">
       <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -45,6 +54,7 @@ export default function SpecsSection() {
             initial={{ opacity: 0, x: -30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
+            style={{ x, scale }}
             className="relative"
           >
             <div className="aspect-square max-w-md mx-auto rounded-3xl bg-gradient-to-br from-blue-100 to-cyan-50 dark:from-slate-800 dark:to-blue-900/30 flex items-center justify-center overflow-hidden shadow-inner">
@@ -70,7 +80,9 @@ export default function SpecsSection() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.4 + index * 0.05 }}
-                  className="p-4 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-100 dark:border-slate-700 hover:border-blue-200 dark:hover:border-blue-700 transition-colors"
+                  whileHover={{ scale: 1.05, x: 5 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-4 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-100 dark:border-slate-700 hover:border-blue-200 dark:hover:border-blue-700 transition-colors cursor-pointer"
                 >
                   <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">
                     {spec.label}

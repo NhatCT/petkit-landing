@@ -1,7 +1,8 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { useRef } from 'react'
 import {
   Camera,
   Wind,
@@ -58,10 +59,30 @@ const features = [
 
 export default function FeaturesSection() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  })
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -50])
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 50])
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
 
   return (
-    <section id="features" className="py-20 lg:py-32 relative">
-      <div className="absolute inset-0 bg-gray-50 dark:bg-slate-900/50" />
+    <section id="features" ref={sectionRef} className="py-20 lg:py-32 relative overflow-hidden">
+      <motion.div style={{ opacity }} className="absolute inset-0 bg-gray-50 dark:bg-slate-900/50" />
+
+      {/* Parallax background elements */}
+      <motion.div
+        style={{ y: y1 }}
+        className="absolute top-20 left-10 w-64 h-64 bg-purple-200/30 dark:bg-purple-500/10 rounded-full blur-3xl -z-10"
+      />
+      <motion.div
+        style={{ y: y2 }}
+        className="absolute bottom-20 right-10 w-80 h-80 bg-cyan-200/30 dark:bg-cyan-500/10 rounded-full blur-3xl -z-10"
+      />
+
       <div ref={ref} className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -86,7 +107,8 @@ export default function FeaturesSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+              whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.2 } }}
+              whileTap={{ scale: 0.98 }}
               className="group p-6 lg:p-8 rounded-2xl bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300"
             >
               <div
