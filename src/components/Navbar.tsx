@@ -31,7 +31,7 @@ export default function Navbar() {
     { label: 'Liên hệ', href: '#contact' },
   ]
 
-  const { wishlist, cartCount, toggleChat } = useStore()
+  const { wishlist, cartCount, toggleCart } = useStore()
 
   return (
     <motion.nav
@@ -79,27 +79,27 @@ export default function Navbar() {
             </button>
 
             <button
-              onClick={toggleChat}
+              onClick={toggleCart}
               className="hidden md:flex p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors relative"
-              aria-label="Open chat"
-            >
-              <Heart className="w-5 h-5 text-gray-600 dark:text-gray-300" />
-              {wishlist.length > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
-                  {wishlist.length}
-                </span>
-              )}
-            </button>
-
-            <button
-              onClick={toggleChat}
-              className="hidden md:flex p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors relative"
-              aria-label="Open cart"
+              aria-label="Mở giỏ hàng"
             >
               <ShoppingCart className="w-5 h-5 text-gray-600 dark:text-gray-300" />
               {cartCount() > 0 && (
                 <span className="absolute -top-1 -right-1 w-4 h-4 bg-blue-500 text-white text-xs rounded-full flex items-center justify-center">
                   {cartCount()}
+                </span>
+              )}
+            </button>
+
+            <button
+              onClick={toggleCart}
+              className="hidden md:flex p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors relative"
+              aria-label="Danh sách yêu thích"
+            >
+              <Heart className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+              {wishlist.length > 0 && (
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
+                  {wishlist.length}
                 </span>
               )}
             </button>

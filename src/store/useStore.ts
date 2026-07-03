@@ -15,6 +15,9 @@ interface AppStore {
   chatOpen: boolean;
   toggleChat: () => void;
 
+  cartOpen: boolean;
+  toggleCart: () => void;
+
   // Wishlist
   wishlist: string[];
   toggleWishlist: (productId: string) => void;
@@ -50,6 +53,9 @@ export const useStore = create<AppStore>((set, get) => ({
   chatOpen: false,
   toggleChat: () => set((state) => ({ chatOpen: !state.chatOpen })),
 
+  cartOpen: false,
+  toggleCart: () => set((state) => ({ cartOpen: !state.cartOpen })),
+
   // Wishlist
   wishlist: [],
   toggleWishlist: (productId: string) => {
@@ -77,7 +83,8 @@ export const useStore = create<AppStore>((set, get) => ({
         cart = [...state.cart, { ...item, quantity: 1 }];
       }
       localStorage.setItem('cart', JSON.stringify(cart));
-      return { cart };
+      // Mở giỏ hàng tự động khi thêm sản phẩm, để khách thấy ngay xác nhận
+      return { cart, cartOpen: true };
     });
   },
   removeFromCart: (productId: string) => {

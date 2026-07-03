@@ -1,20 +1,21 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Plus, Minus, Trash2, Heart } from 'lucide-react'
+import { X, Plus, Minus, Trash2 } from 'lucide-react'
 import { useStore } from '@/store/useStore'
 
 export default function CartDrawer() {
-  const { cart, removeFromCart, updateQuantity, cartTotal, cartCount, clearCart, wishlist, toggleWishlist } = useStore()
+  const { cart, cartOpen, toggleCart, removeFromCart, updateQuantity, cartTotal, cartCount, clearCart } = useStore()
 
   return (
     <AnimatePresence>
-      {cartCount() > 0 && (
+      {cartOpen && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
+          onClick={toggleCart}
         >
           <motion.div
             initial={{ x: '100%' }}
@@ -22,21 +23,39 @@ export default function CartDrawer() {
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             className="absolute right-0 top-0 h-full w-full max-w-md bg-white dark:bg-slate-900 shadow-2xl flex flex-col"
+            onClick={(e) => e.stopPropagation()}
           >
             <div className="p-6 border-b dark:border-slate-800 flex items-center justify-between">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
                 Giỏ hàng ({cartCount()})
               </h2>
-              <button
-                onClick={clearCart}
-                className="text-sm text-red-500 hover:text-red-600 flex items-center gap-1"
-              >
-                <Trash2 className="w-4 h-4" />
-                Xóa tất cả
-              </button>
+              <div className="flex items-center gap-3">
+                {cart.length > 0 && (
+                  <button
+                    onClick={clearCart}
+                    className="text-sm text-red-500 hover:text-red-600 flex items-center gap-1"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                    Xóa tất cả
+                  </button>
+                )}
+                <button
+                  onClick={toggleCart}
+                  className="p-1 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800"
+                  aria-label="Đóng giỏ hàng"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
             </div>
 
             <div className="flex-1 overflow-y-auto p-6 space-y-4">
+              {cart.length === 0 && (
+                <div className="h-full flex flex-col items-center justify-center text-center text-gray-500 dark:text-gray-400 gap-2">
+                  <p className="font-medium">Giỏ hàng của bạn đang trống</p>
+                  <p className="text-sm">Thêm sản phẩm để bắt đầu mua sắm</p>
+                </div>
+              )}
               {cart.map((item) => (
                 <motion.div
                   key={item.id}
@@ -97,7 +116,8 @@ export default function CartDrawer() {
                 </span>
               </div>
               <button
-                className="w-full py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/25 transition-all"
+                disabled={cart.length === 0}
+                className="w-full py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/25 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 onClick={() => alert('Tính năng thanh toán sẽ được tích hợp sau!')}
               >
                 Thanh toán
