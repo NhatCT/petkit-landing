@@ -1,12 +1,19 @@
+'use client'
+
 import Navbar from '@/components/Navbar'
 import HeroSection from '@/components/HeroSection'
 import dynamic from 'next/dynamic'
 import Footer from '@/components/Footer'
-import Chatbot from '@/components/Chatbot'
 import ScrollProgress from '@/components/ScrollProgress'
 import ScrollTracker from '@/components/ScrollTracker'
 import CartDrawer from '@/components/CartDrawer'
 import BackToTop from '@/components/BackToTop'
+
+// Lazy load Chatbot to improve initial page load
+const Chatbot = dynamic(() => import('@/components/Chatbot'), {
+  loading: () => null,
+  ssr: false,
+})
 
 const FeaturesSection = dynamic(() => import('@/components/FeaturesSection'), {
   loading: () => (
