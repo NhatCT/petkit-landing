@@ -58,6 +58,14 @@ export default function ContactForm() {
     setStatus('loading')
 
     try {
+      // Các key ở đây PHẢI khớp chính xác với biến {{...}} trong
+      // Template EmailJS (tab Content / Subject của template "Contact Us"):
+      //   {{name}}    <- formData.name
+      //   {{email}}   <- formData.email   (dùng làm Reply To trong template)
+      //   {{phone}}   <- formData.phone
+      //   {{message}} <- formData.message
+      //   {{time}}    <- thời gian gửi
+      //   {{title}}   <- dùng trong Subject "Contact Us: {{title}}"
       const templateParams = {
         name: formData.name,
         email: formData.email,

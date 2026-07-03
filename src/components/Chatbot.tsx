@@ -23,7 +23,7 @@ const INITIAL_MESSAGES: Message[] = [
 ]
 
 const AUTO_RESPONSES: Record<string, string> = {
-  'giá': 'PETKIT Purobot Ultra có Camera AI hiện có giá 19.800.000đ (giá gốc 35.000.000đ). Nhập mã PETKIT10% hoặc nhắn Zalo OA để giảm thêm 10%. Bạn muốn tôi tư vấn thêm không?',
+  'giá': 'PETKIT Purobot Ultra có Camera AI hiện có giá 19.800.000đ (giá gốc 35.000.000đ). Nhập mã WELCOME10 để giảm thêm 10% cho đơn hàng đầu tiên. Bạn muốn tôi tư vấn thêm không?',
   'bảo hành': 'Purobot Ultra được bảo hành chính hãng 24 tháng tại HeLiCorp. Linh kiện chính hãng có sẵn. Hotline: 0799 258 929 (24/7).',
   'mèo': 'Purobot Ultra phù hợp với TẤT CẢ giống mèo, trọng lượng dưới 10kg, từ 6 tháng tuổi và 1.5kg trở lên. Đáp ứng tốt cho 3-5 bé mèo.',
   'giao hàng': 'Miễn phí giao hàng toàn quốc. Lắp đặt tận nơi tại Hà Nội và TP.HCM. Hỗ trợ trả góp 0% lãi suất, miễn phí cà thẻ.',
@@ -36,7 +36,7 @@ function getAutoResponse(input: string): string {
   for (const [key, response] of Object.entries(AUTO_RESPONSES)) {
     if (lower.includes(key)) return response
   }
-  return 'Cảm ơn bạn đã quan tâm! Để được tư vấn chi tiết hơn, bạn có thể để lại thông tin tại mục "Đăng ký nhận tin" hoặc gọi hotline 1900-xxxx. Tôi có thể hỗ trợ gì thêm không?'
+  return 'Cảm ơn bạn đã quan tâm! Để được tư vấn chi tiết hơn, bạn có thể để lại thông tin tại mục "Đăng ký nhận tin" hoặc gọi hotline 0799 258 929. Tôi có thể hỗ trợ gì thêm không?'
 }
 
 export default function Chatbot() {

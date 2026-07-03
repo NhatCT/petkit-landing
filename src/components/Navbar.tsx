@@ -46,10 +46,11 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           <a href="#" className="flex items-center gap-2">
-            <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-xl flex items-center justify-center">
-              <span className="text-white font-bold text-sm md:text-lg">P</span>
-            </div>
-            <span className="text-lg md:text-xl font-bold gradient-text">PETKIT</span>
+            <img
+              src="https://bizweb.dktcdn.net/100/492/700/themes/953114/assets/logo.png?1777695381976"
+              alt="PETKIT Việt Nam"
+              className="h-8 md:h-10 w-auto"
+            />
           </a>
 
           <div className="hidden md:flex items-center gap-8">

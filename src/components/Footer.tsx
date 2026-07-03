@@ -5,10 +5,11 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-sm">P</span>
-              </div>
-              <span className="text-white font-bold text-lg">PETKIT</span>
+              <img
+                src="https://bizweb.dktcdn.net/100/492/700/themes/953114/assets/logo.png?1777695381976"
+                alt="PETKIT Việt Nam"
+                className="h-8 w-auto"
+              />
             </div>
             <p className="text-sm leading-relaxed">
               Thiết bị thông minh hàng đầu dành cho thú cưng. Công nghệ hiện đại,
