@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useRef } from 'react'
+import Image from 'next/image'
 
 const specs = [
   { label: 'Chất liệu cabin', value: 'Nhựa ABS - 70 Lít' },
@@ -57,12 +58,14 @@ export default function SpecsSection() {
             style={{ x, scale }}
             className="relative"
           >
-            <div className="aspect-square max-w-md mx-auto rounded-3xl bg-gradient-to-br from-blue-100 to-cyan-50 dark:from-slate-800 dark:to-blue-900/30 flex items-center justify-center overflow-hidden shadow-inner">
-              <img
+            <div className="relative aspect-square max-w-md mx-auto rounded-3xl bg-gradient-to-br from-blue-100 to-cyan-50 dark:from-slate-800 dark:to-blue-900/30 overflow-hidden shadow-inner">
+              <Image
                 src="https://bizweb.dktcdn.net/100/492/700/products/petkit-purobot-ultra-camera-2.jpg?v=1727943618297"
                 alt="PETKIT Purobot Ultra - góc nhìn bên trong"
-                className="w-full h-full object-contain p-6"
+                fill
+                className="object-contain p-6"
                 loading="lazy"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 448px"
               />
             </div>
           </motion.div>

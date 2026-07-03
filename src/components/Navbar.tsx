@@ -45,12 +45,15 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <a href="#" className="flex items-center gap-2">
-            <img
-              src="https://bizweb.dktcdn.net/100/492/700/themes/953114/assets/logo.png?1777695381976"
-              alt="PETKIT Việt Nam"
-              className="h-8 md:h-10 w-auto"
-            />
+          <a href="#" className="flex items-center gap-2 relative z-10">
+            <div className="relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm rounded-lg p-1 shadow-sm">
+              <img
+                src="https://bizweb.dktcdn.net/100/492/700/themes/953114/assets/logo.png?1777695381976"
+                alt="PETKIT Việt Nam"
+                className="h-8 md:h-10 w-auto"
+                loading="eager"
+              />
+            </div>
           </a>
 
           <div className="hidden md:flex items-center gap-8">

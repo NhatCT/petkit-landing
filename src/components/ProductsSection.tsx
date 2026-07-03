@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Heart, ShoppingCart, Eye } from 'lucide-react'
 import { useStore } from '@/store/useStore'
+import Image from 'next/image'
 
 const products = [
   {
@@ -66,11 +67,13 @@ export default function ProductsSection() {
               className="group rounded-2xl overflow-hidden bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 shadow-sm hover:shadow-2xl transition-all"
             >
               <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-white dark:from-slate-700 dark:to-slate-600 flex items-center justify-center overflow-hidden">
-                <img
+                <Image
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-300"
+                  fill
+                  className="object-contain p-4 group-hover:scale-110 transition-transform duration-300"
                   loading="lazy"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   onClick={() => handleProductClick(product.id)}
                 />
                 <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
