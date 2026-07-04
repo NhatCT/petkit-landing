@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { useStore } from '@/store/useStore'
 
 export default function WishlistPanel() {
-  const { wishlistOpen, toggleWishlistPanel, wishlist, toggleWishlist } = useStore()
+  const { wishlistOpen, toggleWishlistPanel } = useStore()
   const [wishlistItems, setWishlistItems] = useState<any[]>([])
   const [loading, setLoading] = useState(false)
 
@@ -28,6 +28,25 @@ export default function WishlistPanel() {
       console.error('Error loading wishlist:', error)
     } finally {
       setLoading(false)
+    }
+  }
+
+  const removeFromWishlist = async (productId: string) => {
+    try {
+      const response = await fetch('/api/wishlist', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: 'guest',
+          productId
+        })
+      })
+
+      if (response.ok) {
+        await loadWishlist()
+      }
+    } catch (error) {
+      console.error('Error removing from wishlist:', error)
     }
   }
 
@@ -81,7 +100,7 @@ export default function WishlistPanel() {
                       </p>
                     </div>
                     <button
-                      onClick={() => toggleWishlist(item.id)}
+                      onClick={() => removeFromWishlist(item.id)}
                       className="p-2 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20"
                       aria-label="Xóa khỏi danh sách"
                     >
