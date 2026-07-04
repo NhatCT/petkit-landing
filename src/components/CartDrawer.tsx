@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { useStore } from '@/store/useStore'
 
 export default function CartDrawer() {
-  const { cartOpen, toggleCart, removeFromCart, updateQuantity, cartTotal, cartCount, clearCart } = useStore()
+  const { cartOpen, toggleCart, removeFromCart, updateQuantity, clearCart } = useStore()
   const [cartItems, setCartItems] = useState<any[]>([])
   const [loading, setLoading] = useState(false)
 
@@ -51,7 +51,7 @@ export default function CartDrawer() {
           >
             <div className="p-6 border-b dark:border-slate-800 flex items-center justify-between">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Giỏ hàng ({cartCount()})
+                Giỏ hàng ({cartItems.reduce((sum, item) => sum + item.quantity, 0)})
               </h2>
               <div className="flex items-center gap-3">
                 {cartItems.length > 0 && (
@@ -141,7 +141,7 @@ export default function CartDrawer() {
               <div className="flex items-center justify-between text-lg">
                 <span className="text-gray-600 dark:text-gray-400">Tổng cộng:</span>
                 <span className="font-bold text-2xl text-gray-900 dark:text-white">
-                  {cartTotal().toLocaleString('vi-VN')}đ
+                  {cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0).toLocaleString('vi-VN')}đ
                 </span>
               </div>
               <button
