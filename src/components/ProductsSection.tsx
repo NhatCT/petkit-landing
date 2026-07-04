@@ -6,8 +6,6 @@ import { Heart, ShoppingCart, Eye } from 'lucide-react'
 import { useStore } from '@/store/useStore'
 import Image from 'next/image'
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || ''
-
 const products = [
   {
     id: 'purobot-ultra',
@@ -36,50 +34,12 @@ export default function ProductsSection() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
   const { addToCart, toggleWishlist, isInWishlist, addToViewed } = useStore()
 
-  const handleAddToCart = async (product: any) => {
-    try {
-      const response = await fetch(`${API_BASE}/api/cart`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userId: 'guest',
-          product: product
-        })
-      })
-      
-      if (response.ok) {
-        addToCart(product)
-      }
-    } catch (error) {
-      console.error('Error adding to cart:', error)
-    }
+  const handleAddToCart = (product: any) => {
+    addToCart(product)
   }
 
-  const handleToggleWishlist = async (productId: string) => {
-    try {
-      const product = products.find(p => p.id === productId)
-      if (!product) return
-
-      const response = await fetch(`${API_BASE}/api/wishlist`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userId: 'guest',
-          product: {
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            image: product.image
-          }
-        })
-      })
-      
-      if (response.ok) {
-        toggleWishlist(productId)
-      }
-    } catch (error) {
-      console.error('Error adding to wishlist:', error)
-    }
+  const handleToggleWishlist = (productId: string) => {
+    toggleWishlist(productId)
   }
 
   const handleProductClick = (productId: string) => {
