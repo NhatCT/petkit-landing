@@ -2,10 +2,34 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Plus, Minus, Trash2 } from 'lucide-react'
+import { useState, useEffect } from 'react'
 import { useStore } from '@/store/useStore'
 
 export default function CartDrawer() {
-  const { cart, cartOpen, toggleCart, removeFromCart, updateQuantity, cartTotal, cartCount, clearCart } = useStore()
+  const { cartOpen, toggleCart, removeFromCart, updateQuantity, cartTotal, cartCount, clearCart } = useStore()
+  const [cartItems, setCartItems] = useState<any[]>([])
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    if (cartOpen) {
+      loadCart()
+    }
+  }, [cartOpen])
+
+  const loadCart = async () => {
+    setLoading(true)
+    try {
+      const response = await fetch('/api/cart?userId=guest')
+      if (response.ok) {
+        const data = await response.json()
+        setCartItems(data.cart || [])
+      }
+    } catch (error) {
+      console.error('Error loading cart:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <AnimatePresence>
@@ -30,7 +54,7 @@ export default function CartDrawer() {
                 Giỏ hàng ({cartCount()})
               </h2>
               <div className="flex items-center gap-3">
-                {cart.length > 0 && (
+                {cartItems.length > 0 && (
                   <button
                     onClick={clearCart}
                     className="text-sm text-red-500 hover:text-red-600 flex items-center gap-1"
@@ -50,62 +74,67 @@ export default function CartDrawer() {
             </div>
 
             <div className="flex-1 overflow-y-auto p-6 space-y-4">
-              {cart.length === 0 && (
+              {loading ? (
+                <div className="h-full flex items-center justify-center">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                </div>
+              ) : cartItems.length === 0 ? (
                 <div className="h-full flex flex-col items-center justify-center text-center text-gray-500 dark:text-gray-400 gap-2">
                   <p className="font-medium">Giỏ hàng của bạn đang trống</p>
                   <p className="text-sm">Thêm sản phẩm để bắt đầu mua sắm</p>
                 </div>
-              )}
-              {cart.map((item) => (
-                <motion.div
-                  key={item.id}
-                  layout
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  className="flex gap-4 p-4 bg-gray-50 dark:bg-slate-800 rounded-xl"
-                >
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-20 h-20 object-cover rounded-lg"
-                  />
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
-                      {item.name}
-                    </h3>
-                    <p className="text-blue-600 dark:text-blue-400 font-bold mb-2">
-                      {item.price.toLocaleString('vi-VN')}đ
-                    </p>
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                        className="p-1 rounded-lg bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600"
-                        aria-label="Giảm số lượng"
-                      >
-                        <Minus className="w-4 h-4" />
-                      </button>
-                      <span className="w-8 text-center font-semibold text-gray-900 dark:text-white">
-                        {item.quantity}
-                      </span>
-                      <button
-                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                        className="p-1 rounded-lg bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600"
-                        aria-label="Tăng số lượng"
-                      >
-                        <Plus className="w-4 h-4" />
-                      </button>
-                      <button
-                        onClick={() => removeFromCart(item.id)}
-                        className="ml-auto p-1 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20"
-                        aria-label="Xóa sản phẩm"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
+              ) : (
+                cartItems.map((item) => (
+                  <motion.div
+                    key={item.id}
+                    layout
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    className="flex gap-4 p-4 bg-gray-50 dark:bg-slate-800 rounded-xl"
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-20 h-20 object-cover rounded-lg"
+                    />
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
+                        {item.name}
+                      </h3>
+                      <p className="text-blue-600 dark:text-blue-400 font-bold mb-2">
+                        {item.price.toLocaleString('vi-VN')}đ
+                      </p>
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                          className="p-1 rounded-lg bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600"
+                          aria-label="Giảm số lượng"
+                        >
+                          <Minus className="w-4 h-4" />
+                        </button>
+                        <span className="w-8 text-center font-semibold text-gray-900 dark:text-white">
+                          {item.quantity}
+                        </span>
+                        <button
+                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                          className="p-1 rounded-lg bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600"
+                          aria-label="Tăng số lượng"
+                        >
+                          <Plus className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => removeFromCart(item.id)}
+                          className="ml-auto p-1 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20"
+                          aria-label="Xóa sản phẩm"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                ))
+              )}
             </div>
 
             <div className="p-6 border-t dark:border-slate-800 space-y-4">
@@ -116,7 +145,7 @@ export default function CartDrawer() {
                 </span>
               </div>
               <button
-                disabled={cart.length === 0}
+                disabled={cartItems.length === 0}
                 className="w-full py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-blue-500/25 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 onClick={() => alert('Tính năng thanh toán sẽ được tích hợp sau!')}
               >

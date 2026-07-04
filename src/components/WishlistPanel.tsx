@@ -2,10 +2,34 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Trash2 } from 'lucide-react'
+import { useState, useEffect } from 'react'
 import { useStore } from '@/store/useStore'
 
 export default function WishlistPanel() {
   const { wishlistOpen, toggleWishlistPanel, wishlist, toggleWishlist } = useStore()
+  const [wishlistItems, setWishlistItems] = useState<any[]>([])
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    if (wishlistOpen) {
+      loadWishlist()
+    }
+  }, [wishlistOpen])
+
+  const loadWishlist = async () => {
+    setLoading(true)
+    try {
+      const response = await fetch('/api/wishlist?userId=guest')
+      if (response.ok) {
+        const data = await response.json()
+        setWishlistItems(data.wishlist || [])
+      }
+    } catch (error) {
+      console.error('Error loading wishlist:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <AnimatePresence>
@@ -39,21 +63,25 @@ export default function WishlistPanel() {
             </div>
 
             <div className="flex-1 overflow-y-auto p-6 space-y-4">
-              {wishlist.length === 0 ? (
+              {loading ? (
+                <div className="h-full flex items-center justify-center">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                </div>
+              ) : wishlistItems.length === 0 ? (
                 <div className="h-full flex flex-col items-center justify-center text-center text-gray-500 dark:text-gray-400 gap-2">
                   <p className="font-medium">Danh sách yêu thích trống</p>
                   <p className="text-sm">Thêm sản phẩm để bắt đầu</p>
                 </div>
               ) : (
-                wishlist.map((productId) => (
-                  <div key={productId} className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-slate-800 rounded-xl">
+                wishlistItems.map((item) => (
+                  <div key={item.id} className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-slate-800 rounded-xl">
                     <div className="flex-1">
                       <p className="font-semibold text-gray-900 dark:text-white">
-                        {productId}
+                        {item.id}
                       </p>
                     </div>
                     <button
-                      onClick={() => toggleWishlist(productId)}
+                      onClick={() => toggleWishlist(item.id)}
                       className="p-2 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20"
                       aria-label="Xóa khỏi danh sách"
                     >
