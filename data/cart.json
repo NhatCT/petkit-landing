@@ -1,3 +1,20 @@
 {
-  "guest": []
+  "guest": [
+    {
+      "id": "purobot-ultra",
+      "name": "PETKIT Purobot Ultra",
+      "price": 19800000,
+      "image": "https://bizweb.dktcdn.net/100/492/700/products/petkit-purobot-ultra-camera-3.jpg?v=1727943621200",
+      "quantity": 1,
+      "addedAt": "2026-07-04T08:07:07.499Z"
+    },
+    {
+      "id": "purobot-mini",
+      "name": "PETKIT Purobot Mini",
+      "price": 6900000,
+      "image": "https://bizweb.dktcdn.net/100/492/700/products/petkit-purobot-ultra-camera-5.jpg?v=1727943627310",
+      "quantity": 1,
+      "addedAt": "2026-07-04T08:07:24.328Z"
+    }
+  ]
 }

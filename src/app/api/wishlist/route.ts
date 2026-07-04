@@ -28,7 +28,8 @@ function readWishlist() {
 function writeWishlist(wishlist: any) {
   try {
     ensureDataDir();
-    writeFileSync(DB_PATH, JSON.stringify(wishlist, null, 2));
+    const data = JSON.stringify(wishlist, null, 2);
+    writeFileSync(DB_PATH, data, 'utf-8');
   } catch (error) {
     console.error('Error writing wishlist:', error);
   }

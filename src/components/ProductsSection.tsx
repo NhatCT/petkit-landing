@@ -57,12 +57,20 @@ export default function ProductsSection() {
 
   const handleToggleWishlist = async (productId: string) => {
     try {
+      const product = products.find(p => p.id === productId)
+      if (!product) return
+
       const response = await fetch(`${API_BASE}/api/wishlist`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           userId: 'guest',
-          product: { id: productId }
+          product: {
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image
+          }
         })
       })
       

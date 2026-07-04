@@ -51,7 +51,7 @@ export default function WishlistPanel() {
           >
             <div className="p-6 border-b dark:border-slate-800 flex items-center justify-between">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Danh sách yêu thích ({wishlist.length})
+                Danh sách yêu thích ({wishlistItems.length})
               </h2>
               <button
                 onClick={toggleWishlistPanel}
