@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { useStore } from '@/store/useStore'
 
 export default function CartDrawer() {
-  const { cartOpen, toggleCart, removeFromCart, updateQuantity, clearCart } = useStore()
+  const { cartOpen, toggleCart, clearCart } = useStore()
   const [cartItems, setCartItems] = useState<any[]>([])
   const [loading, setLoading] = useState(false)
 
@@ -28,6 +28,49 @@ export default function CartDrawer() {
       console.error('Error loading cart:', error)
     } finally {
       setLoading(false)
+    }
+  }
+
+  const updateQuantity = async (productId: string, quantity: number) => {
+    if (quantity <= 0) {
+      await removeFromCart(productId)
+      return
+    }
+
+    try {
+      const response = await fetch('/api/cart', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: 'guest',
+          product: { id: productId, quantity }
+        })
+      })
+
+      if (response.ok) {
+        await loadCart()
+      }
+    } catch (error) {
+      console.error('Error updating quantity:', error)
+    }
+  }
+
+  const removeFromCart = async (productId: string) => {
+    try {
+      const response = await fetch('/api/cart', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: 'guest',
+          productId
+        })
+      })
+
+      if (response.ok) {
+        await loadCart()
+      }
+    } catch (error) {
+      console.error('Error removing from cart:', error)
     }
   }
 
