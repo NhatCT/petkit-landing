@@ -71,13 +71,17 @@ export async function POST(request: Request) {
     const existingIndex = userCart.findIndex((item: any) => item.id === product.id);
     
     if (existingIndex >= 0) {
-      // Increment quantity
-      userCart[existingIndex].quantity += 1;
+      // Update quantity if provided, otherwise increment
+      if (product.quantity !== undefined) {
+        userCart[existingIndex].quantity = product.quantity;
+      } else {
+        userCart[existingIndex].quantity += 1;
+      }
     } else {
       // Add new product
       userCart.push({
         ...product,
-        quantity: 1,
+        quantity: product.quantity || 1,
         addedAt: new Date().toISOString()
       });
     }
