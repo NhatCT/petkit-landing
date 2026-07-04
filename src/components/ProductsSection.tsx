@@ -6,6 +6,8 @@ import { Heart, ShoppingCart, Eye } from 'lucide-react'
 import { useStore } from '@/store/useStore'
 import Image from 'next/image'
 
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || ''
+
 const products = [
   {
     id: 'purobot-ultra',
@@ -33,6 +35,44 @@ const products = [
 export default function ProductsSection() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
   const { addToCart, toggleWishlist, isInWishlist, addToViewed } = useStore()
+
+  const handleAddToCart = async (product: any) => {
+    try {
+      const response = await fetch(`${API_BASE}/api/cart`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: 'guest',
+          product: product
+        })
+      })
+      
+      if (response.ok) {
+        addToCart(product)
+      }
+    } catch (error) {
+      console.error('Error adding to cart:', error)
+    }
+  }
+
+  const handleToggleWishlist = async (productId: string) => {
+    try {
+      const response = await fetch(`${API_BASE}/api/wishlist`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: 'guest',
+          product: { id: productId }
+        })
+      })
+      
+      if (response.ok) {
+        toggleWishlist(productId)
+      }
+    } catch (error) {
+      console.error('Error adding to wishlist:', error)
+    }
+  }
 
   const handleProductClick = (productId: string) => {
     addToViewed(productId)
@@ -78,7 +118,7 @@ export default function ProductsSection() {
                 />
                 <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   <button
-                    onClick={() => toggleWishlist(product.id)}
+                    onClick={() => handleToggleWishlist(product.id)}
                     className="p-2 rounded-lg bg-white dark:bg-slate-800 shadow-lg hover:scale-110 transition-transform"
                     aria-label="Thêm vào yêu thích"
                   >
@@ -108,7 +148,7 @@ export default function ProductsSection() {
                 <div className="flex gap-2">
                   <button
                     onClick={() => {
-                      addToCart({
+                      handleAddToCart({
                         id: product.id,
                         name: product.name,
                         price: product.price,
