@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
-import emailjs from '@emailjs/browser'
 
 interface FormData {
   name: string
@@ -58,34 +57,30 @@ export default function ContactForm() {
     setStatus('loading')
 
     try {
-      // Các key ở đây PHẢI khớp chính xác với biến {{...}} trong
-      // Template EmailJS (tab Content / Subject của template "Contact Us"):
-      //   {{name}}    <- formData.name
-      //   {{email}}   <- formData.email   (dùng làm Reply To trong template)
-      //   {{phone}}   <- formData.phone
-      //   {{message}} <- formData.message
-      //   {{time}}    <- thời gian gửi
-      //   {{title}}   <- dùng trong Subject "Contact Us: {{title}}"
-      const templateParams = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        message: formData.message,
-        time: new Date().toLocaleString('vi-VN'),
-        title: 'Đăng ký nhận tin',
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        }),
+      })
+
+      const result = await response.json()
+
+      if (response.ok) {
+        setStatus('success')
+        setFormData({ name: '', email: '', phone: '', message: '' })
+        console.log('Form submitted successfully:', result)
+      } else {
+        throw new Error(result.error || 'Có lỗi xảy ra')
       }
-
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-        templateParams,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
-      )
-
-      setStatus('success')
-      setFormData({ name: '', email: '', phone: '', message: '' })
     } catch (error) {
-      console.error('EmailJS error:', error)
+      console.error('Form submission error:', error)
       setStatus('error')
     }
   }

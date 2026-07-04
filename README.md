@@ -39,6 +39,7 @@ Landing page giới thiệu sản phẩm **PETKIT PURA MAX 2** - Nhà vệ sinh 
 
 ## Tech Stack
 
+### Frontend
 | Công nghệ | Vai trò |
 |-----------|---------|
 | Next.js 16 | Framework React SSG |
@@ -49,6 +50,12 @@ Landing page giới thiệu sản phẩm **PETKIT PURA MAX 2** - Nhà vệ sinh 
 | Zustand | State management |
 | Lucide React | Icons |
 | react-intersection-observer | Scroll detection |
+
+### Backend
+| Công nghệ | Vai trò |
+|-----------|---------|
+| Next.js API Routes | RESTful API |
+| JSON File Storage | Database (cart, wishlist, contact) |
 
 ## Cài đặt & Chạy
 
@@ -80,31 +87,46 @@ src/
 ├── app/
 │   ├── layout.tsx          # Root layout + SEO metadata
 │   ├── page.tsx            # Main page composition
-│   └── globals.css         # Global styles + CSS vars
+│   ├── globals.css         # Global styles + CSS vars
+│   └── api/                # Backend API Routes
+│       ├── contact/
+│       │   └── route.ts    # Contact form API
+│       ├── cart/
+│       │   └── route.ts    # Cart management API
+│       └── wishlist/
+│           └── route.ts    # Wishlist management API
 ├── components/
 │   ├── Navbar.tsx          # Navigation + Dark mode + Cart
 │   ├── HeroSection.tsx     # Hero with parallax
 │   ├── FeaturesSection.tsx # 6 feature cards
 │   ├── SpecsSection.tsx    # Technical specifications
 │   ├── ProductsSection.tsx # Product grid + e-commerce
-│   ├── ContactForm.tsx     # Newsletter signup form
+│   ├── ContactForm.tsx     # Newsletter signup form (connected to API)
 │   ├── CartDrawer.tsx      # Slide-out cart panel
 │   ├── Chatbot.tsx         # AI chatbot window
 │   ├── ScrollProgress.tsx  # Scroll progress bar
 │   ├── ScrollTracker.tsx   # Behavior analytics
 │   ├── BackToTop.tsx       # Back to top button
 │   └── Footer.tsx          # Footer links
-└── store/
-    └── useStore.ts         # Zustand global state
+├── store/
+│   └── useStore.ts         # Zustand global state
+└── data/                   # JSON file storage
+    ├── cart.json
+    └── wishlist.json
 ```
 
 ## Deploy
 
-Trang web được deploy tĩnh (static export), tương thích với:
-- Vercel
+Trang web được deploy tĩnh (static export) với Backend API, tương thích với:
+- **Vercel** (Khuyến nghị - hỗ trợ Next.js API Routes)
 - Netlify
 - Cloudflare Pages
-- GitHub Pages
+
+### Deploy trên Vercel:
+1. Push code lên GitHub
+2. Import project trên Vercel
+3. Vercel tự động detect Next.js và deploy
+4. API Routes sẽ hoạt động tự động
 
 ## Tác giả
 
