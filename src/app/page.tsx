@@ -7,6 +7,7 @@ import Footer from '@/components/Footer'
 import ScrollProgress from '@/components/ScrollProgress'
 import ScrollTracker from '@/components/ScrollTracker'
 import CartDrawer from '@/components/CartDrawer'
+import WishlistPanel from '@/components/WishlistPanel'
 import BackToTop from '@/components/BackToTop'
 
 // Lazy load Chatbot to improve initial page load
@@ -124,6 +125,7 @@ export default function Home() {
       <Footer />
       <Chatbot />
       <CartDrawer />
+      <WishlistPanel />
       <BackToTop />
     </>
   )

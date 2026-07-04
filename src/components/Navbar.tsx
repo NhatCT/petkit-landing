@@ -31,7 +31,7 @@ export default function Navbar() {
     { label: 'Liên hệ', href: '#contact' },
   ]
 
-  const { wishlist, cartCount, toggleCart } = useStore()
+  const { wishlist, cartCount, toggleCart, toggleWishlistPanel } = useStore()
 
   return (
     <motion.nav
@@ -93,7 +93,7 @@ export default function Navbar() {
             </button>
 
             <button
-              onClick={toggleCart}
+              onClick={toggleWishlistPanel}
               className="hidden md:flex p-2 rounded-lg hover:bg-white/20 transition-colors relative"
               aria-label="Danh sách yêu thích"
             >
