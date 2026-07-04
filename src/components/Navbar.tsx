@@ -39,21 +39,19 @@ export default function Navbar() {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
+          ? 'bg-gradient-to-r from-blue-600 to-cyan-500 shadow-lg'
+          : 'bg-gradient-to-r from-blue-600 to-cyan-500'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <a href="#" className="flex items-center gap-2 relative z-10">
-            <div className="relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm rounded-lg p-1 shadow-sm">
-              <img
-                src="https://bizweb.dktcdn.net/100/492/700/themes/953114/assets/logo.png?1777695381976"
-                alt="PETKIT Việt Nam"
-                className="h-8 md:h-10 w-auto"
-                loading="eager"
-              />
-            </div>
+          <a href="#" className="flex items-center gap-2">
+            <img
+              src="https://bizweb.dktcdn.net/100/492/700/themes/953114/assets/logo.png?1777695381976"
+              alt="PETKIT Việt Nam"
+              className="h-8 md:h-10 w-auto"
+              loading="eager"
+            />
           </a>
 
           <div className="hidden md:flex items-center gap-8">
@@ -61,7 +59,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                className="text-sm font-medium text-white hover:text-blue-100 transition-colors"
               >
                 {link.label}
               </a>
@@ -71,24 +69,24 @@ export default function Navbar() {
           <div className="flex items-center gap-1 md:gap-4">
             <button
               onClick={toggleDarkMode}
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors"
+              className="p-2 rounded-lg hover:bg-white/20 transition-colors"
               aria-label="Toggle dark mode"
             >
               {darkMode ? (
-                <Sun className="w-5 h-5 text-yellow-500" />
+                <Sun className="w-5 h-5 text-yellow-300" />
               ) : (
-                <Moon className="w-5 h-5 text-gray-600" />
+                <Moon className="w-5 h-5 text-white" />
               )}
             </button>
 
             <button
               onClick={toggleCart}
-              className="hidden md:flex p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors relative"
+              className="hidden md:flex p-2 rounded-lg hover:bg-white/20 transition-colors relative"
               aria-label="Mở giỏ hàng"
             >
-              <ShoppingCart className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+              <ShoppingCart className="w-5 h-5 text-white" />
               {cartCount() > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-blue-500 text-white text-xs rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-white text-blue-600 text-xs rounded-full flex items-center justify-center font-semibold">
                   {cartCount()}
                 </span>
               )}
@@ -96,12 +94,12 @@ export default function Navbar() {
 
             <button
               onClick={toggleCart}
-              className="hidden md:flex p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors relative"
+              className="hidden md:flex p-2 rounded-lg hover:bg-white/20 transition-colors relative"
               aria-label="Danh sách yêu thích"
             >
-              <Heart className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+              <Heart className="w-5 h-5 text-white" />
               {wishlist.length > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-white text-red-600 text-xs rounded-full flex items-center justify-center font-semibold">
                   {wishlist.length}
                 </span>
               )}
@@ -109,12 +107,12 @@ export default function Navbar() {
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800"
+              className="md:hidden p-2 rounded-lg hover:bg-white/20"
             >
               {mobileOpen ? (
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5 text-white" />
               ) : (
-                <Menu className="w-5 h-5" />
+                <Menu className="w-5 h-5 text-white" />
               )}
             </button>
           </div>
@@ -127,7 +125,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white dark:bg-slate-900 border-t dark:border-slate-800"
+            className="md:hidden bg-blue-700 border-t border-blue-500"
           >
             <div className="px-4 py-4 space-y-3">
               {navLinks.map((link) => (
@@ -135,7 +133,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600"
+                  className="block text-sm font-medium text-white hover:text-blue-100"
                 >
                   {link.label}
                 </a>

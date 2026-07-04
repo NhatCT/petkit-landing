@@ -32,7 +32,7 @@ export default function BackToTop() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.5, y: 20 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-40 p-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-full shadow-lg hover:shadow-xl hover:shadow-blue-500/25 transition-all hover:scale-110"
+          className="fixed bottom-8 right-8 z-50 p-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-full shadow-lg hover:shadow-xl hover:shadow-blue-500/25 transition-all hover:scale-110"
           aria-label="Về đầu trang"
         >
           <ArrowUp className="w-6 h-6" />
