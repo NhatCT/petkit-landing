@@ -20,7 +20,7 @@ Landing page giới thiệu sản phẩm **PETKIT PURA MAX 2** - Nhà vệ sinh 
 
 ### Hiệu năng & SEO
 - Static Site Generation (SSG) cho tốc độ tối ưu
-- Tailwind CSS - utility-first, tree-shaking CSS
+- Tailwind CSS 4 - utility-first, tree-shaking CSS
 - Framer Motion - hardware-accelerated animations
 - SEO đầy đủ: Title, Description, Open Graph, Twitter Card
 - Google Fonts với `display=swap`
@@ -42,6 +42,7 @@ Landing page giới thiệu sản phẩm **PETKIT PURA MAX 2** - Nhà vệ sinh 
 | Công nghệ | Vai trò |
 |-----------|---------|
 | Next.js 16 | Framework React SSG |
+| React 19 | UI Library |
 | TypeScript | Type safety |
 | Tailwind CSS 4 | Styling |
 | Framer Motion | Animations |
@@ -65,6 +66,9 @@ npm run dev
 # Build
 npm run build
 
+# Start production
+npm run start
+
 # Preview static export
 npx serve out
 ```
@@ -84,10 +88,11 @@ src/
 │   ├── SpecsSection.tsx    # Technical specifications
 │   ├── ProductsSection.tsx # Product grid + e-commerce
 │   ├── ContactForm.tsx     # Newsletter signup form
-│   ├── CartPanel.tsx       # Slide-out cart panel
+│   ├── CartDrawer.tsx      # Slide-out cart panel
 │   ├── Chatbot.tsx         # AI chatbot window
 │   ├── ScrollProgress.tsx  # Scroll progress bar
 │   ├── ScrollTracker.tsx   # Behavior analytics
+│   ├── BackToTop.tsx       # Back to top button
 │   └── Footer.tsx          # Footer links
 └── store/
     └── useStore.ts         # Zustand global state
